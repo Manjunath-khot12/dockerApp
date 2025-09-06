@@ -20,4 +20,9 @@ public class WelcomeController {
     public List<customer> welcome(){
          return us.getAllCustomers();
     }
+
+    @GetMapping
+    public String welcomes(){
+        return "hello";
+    }
 }
