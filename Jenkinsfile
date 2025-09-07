@@ -37,7 +37,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: "${DOCKER_HUB_CREDENTIALS_ID}", passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
                     bat '''
                     docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD%
-                    docker push ${DOCKER_IMAGE}:${IMAGE_TAG}
+                    docker push manjuk08/spring-boot-app:latest
                     '''
                 }
             }
