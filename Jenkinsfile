@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven-3.8.5'   // This is the name you set in Jenkins global tools
+    }
+
     environment {
         DOCKER_HUB_CREDENTIALS_ID = 'docker-hub-credentials'
         DOCKER_IMAGE = 'manjuk08/spring-boot-app'
