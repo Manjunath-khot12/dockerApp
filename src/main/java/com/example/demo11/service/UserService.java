@@ -24,6 +24,7 @@ public class UserService {
         customer u2=new customer(2,"anju",23);
         customer u3=new customer(3,"naju",23);
         customer u4=new customer(4,"sanju",23);
+        customer u5=new customer(5,"vijay",23);
         List<customer> list=new ArrayList<>();
         list.add(u1);
         list.add(u2);
