@@ -32,16 +32,18 @@ pipeline {
             }
         }
 
-        stage('Push Docker Image') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: "${DOCKER_HUB_CREDENTIALS_ID}", passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
-                    bat '''
-                    docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD%
-                    docker push manjuk08/spring-boot-app:latest
-                    '''
-                }
-            }
-        }
+       stage('Push Docker Image') {
+           steps {
+               withCredentials([usernamePassword(credentialsId: "${DOCKER_HUB_CREDENTIALS_ID}", passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+                   retry(3) {
+                       bat '''
+                       docker login -u %DOCKER_USERNAME% -p %DOCKER_PASSWORD%
+                       docker push manjuk08/spring-boot-app:latest
+                       '''
+                   }
+               }
+           }
+       }
 
         stage('Deploy') {
             steps {
